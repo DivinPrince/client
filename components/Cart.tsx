@@ -1,7 +1,7 @@
 'use client'
 import { useStateContext } from '@/context/StateContext'
 import { Product } from '@/types'
-import react, { useEffect, useMemo } from 'react'
+import react, { useEffect, useMemo, useState } from 'react'
 import { cartProduct } from '@/types'
 import Card from './Card'
 import CartProduct from './CartProduct'
@@ -12,13 +12,25 @@ import { Separator } from '@radix-ui/react-select'
 import Separater from './Separater'
 import Currency from './ui/currency'
 import { Input } from './ui/input'
+import useCart from '@/hooks/use-cart'
+import OrderInfo from './OrderInfo'
 // import Input from './Input'
 interface CartProps {
 }
 const Cart: React.FC<CartProps> = ({ }) => {
-   const { onAdd, cartItems, totalQuantities, totalPrice, } = useStateContext()
-   
+   const [isMouted, setIsMouted] = useState(false)
+   useEffect(() => {
+      setIsMouted(true)
+   }, [])
+
+   const cart = useCart()
+   const cartItems = cart.items
    const router = useRouter()
+
+   if (!isMouted) {
+      return null
+   }
+   
    return (
       <div className='flex gap-3 flex-wrap'>
          {cartItems.length ? (
@@ -31,47 +43,19 @@ const Cart: React.FC<CartProps> = ({ }) => {
                            Continue Browsing
                         </Button>
                      </div>
-                     <h1 className='text-lg font-semibold'>Your Cart <span className='text-orange-500'>•</span> {totalQuantities}</h1>
+                     <h1 className='text-lg font-semibold'>Your Cart <span className='text-orange-500'>•</span> {cart.items.length}</h1>
                   </div>
                   <div className='flex justify-between text-gray-500 font-semibold text-base'>
                      <div className='w-fit sm:w-[150px] text-center'>Product</div>
-                     <div className='w-fit sm:w-[150px] text-center'>Quantity</div>
                      <div className='w-fit sm:w-[150px] text-center'>Price</div>
                      <div className='w-fit sm:w-[150px] text-center'>Remove</div>
                   </div>
                   <div></div>
-                  {cartItems.map((item: cartProduct) => (
+                  {cartItems.map((item: Product) => (
                      <CartProduct item={item} key={item.id}/>
                   ))}
-                  <div className='flex justify-between font-semibold text-lg'>
-                     <h1>Products</h1>
-                     <h1><Currency value={totalPrice}/></h1>
-                  </div>
-                  <Separater />
-                  <div className='flex justify-between font-semibold text-lg'>
-                     <h1>Shiping</h1>
-                     <h1><Currency value={10000}/></h1>
-                  </div>
-                  <Separater />
-                  <div className='flex justify-between font-bold  text-orange-500 text-lg'>
-                     <h1>Total</h1>
-                     <h1><Currency value={totalPrice+10000}/></h1>
-                  </div>
-
-
                </Card>
-               <Card className='w-full lg:w-[400px]'>
-                  <h1 className='text-3xl font-semibold'>
-                     Order Information
-                  </h1>
-                  <Input placeholder='Your Name' disabled={false} id='' className='bg-transparent'/>
-                  <div className='flex gap-2'>
-                  <Input placeholder='District' disabled={false} id='' className='bg-transparent'/>
-                  <Input placeholder='Post Code' disabled={false} id='' className='bg-transparent'/>
-                  </div>
-                  <Input placeholder='Phone Number' disabled={false} id='' className='bg-transparent'/>
-                  <Button>Check Out</Button>
-               </Card>
+               <OrderInfo />
             </>
 
          ) : (

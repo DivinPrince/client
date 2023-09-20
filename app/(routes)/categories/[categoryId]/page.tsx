@@ -1,41 +1,33 @@
-import getCategory from '@/app/actions/getCategory';
-import getProductByCategory from '@/app/actions/getProductByCategory';
-import getProductById from '@/app/actions/getProductById';
-import ProductCard from '@/components/ProductCard';
-import Products from '@/components/Products';
-import Separater from '@/components/Separater';
-import { Button } from '@/components/ui/button';
-import { Plus } from 'lucide-react';
-import Image from 'next/image';
 import React from 'react'
-import Filter from './components/filter';
+
+import ProductCard from '@/components/ProductCard';
+import Separater from '@/components/Separater';
+import MobileFilters from './components/mobile-filters';
+import getCategory from '@/actions/get-category';
+import getProducts from '@/actions/get-products';
+import NoResults from '@/components/Noresult';
 interface Iparams {
    categoryId: string;
 }
 const page = async ({ params }: { params: Iparams }) => {
    const category = await getCategory(params.categoryId)
    if (!category) {
-      return <div className='h-full text-center font-semibold text-muted-foreground'>No Results</div>
+      return <NoResults />
    }
-   const products = await getProductByCategory(category.name)
-   console.log(products);
+   const products= await getProducts({categoryId: category.id})
    return (
       <div>
          <div className='flex justify-between items-center'>
             <h1 className='p-2 text-[23px] flex gap-2 font-semibold items-center'>{category.name}</h1>
-            <Button className='flex items-center gap-2 rounded-full'>
-               Filter
-               <Plus />
-            </Button>
+            <MobileFilters colors={[{ id: "gh4as3", name: "Pink", value: "pink" }, { id: "gh4asf3", name: "red", value: "red" }]} sizes={[{ id: "gh43", name: "small", value: "Sm" }, { id: "gh43", name: "Large", value: "Lg" }]}/>
          </div>
          <Separater />
          <div className='flex gap-3 flex-wrap'>
-            {products.map(product => (
+            {products.map((product) => (
                <ProductCard product={product} />
             ))
             }
          </div>
-         {/* <Filter data={products}/> */}
       </div>
    )
 }
