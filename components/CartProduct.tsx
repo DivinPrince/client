@@ -1,5 +1,5 @@
 'use client'
-import { Product, cartProduct } from '@/types'
+import { Product } from '@/types'
 import Image from 'next/image'
 import react from 'react'
 import { Button } from './ui/button'
