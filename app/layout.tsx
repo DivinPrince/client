@@ -2,6 +2,7 @@ import Nav from '@/components/navigation/Nav'
 import './globals.css'
 import type { Metadata } from 'next'
 import { StateContext } from '@/context/StateContext.jsx'
+import { ToastProvider } from '@/providers/toast-provider'
 
 export const metadata: Metadata = {
   title: 'Crpto • Tech',
@@ -17,6 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className='dark'>
         <StateContext>
+          <ToastProvider />
           {children}
         </StateContext>
       </body>

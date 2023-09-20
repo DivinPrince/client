@@ -9,10 +9,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 
 const OrderInfo = () => {
    const items = useCart((state) => state.items)
-
    const totalPrice = items.reduce((total, item) => {
-      return total + item.price
-   }, 0)
+      return total + Number(item.price)
+   }, 0);
    return (
       <Card className='w-full lg:w-[400px]'>
          <h1 className='text-3xl font-semibold'>
