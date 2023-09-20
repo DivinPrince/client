@@ -2,7 +2,6 @@
 import { useStateContext } from '@/context/StateContext'
 import { Product } from '@/types'
 import react, { useEffect, useMemo, useState } from 'react'
-import { cartProduct } from '@/types'
 import Card from './Card'
 import CartProduct from './CartProduct'
 import { ArrowBigLeft, ShoppingBag } from 'lucide-react'

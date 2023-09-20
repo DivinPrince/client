@@ -1,5 +1,6 @@
 import getProduct from '@/actions/get-product';
 import getProducts from '@/actions/get-products';
+import Products from '@/components/Products';
 import Gallery from '@/components/gallery';
 import Info from '@/components/info';
 import Container from '@/components/ui/container';
@@ -29,7 +30,7 @@ const page = async ({ params }: { params: Iparams }) => {
                  </div>
               </div>
               <hr className="my-10" />
-              <ProductList title="Related Items" items={suggestedProducts} />
+              <Products title="Related Items" data={suggestedProducts} />
            </div>
         </Container>
      </div>  
