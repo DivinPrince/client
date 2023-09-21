@@ -1,5 +1,6 @@
 import getProduct from '@/actions/get-product';
 import getProducts from '@/actions/get-products';
+import NoResults from '@/components/Noresult';
 import Products from '@/components/Products';
 import Gallery from '@/components/gallery';
 import Info from '@/components/info';
@@ -17,7 +18,7 @@ const page = async ({ params }: { params: Iparams }) => {
       categoryId: product?.category?.id
    });
    if (!product) {
-      return <>No Result</>
+      return <NoResults/>
    }
   return (
      <div className="">
