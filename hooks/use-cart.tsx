@@ -43,9 +43,11 @@ const useCart = create(
         currentItems[index] = foundProduct
         set({ items: [...get().items] })
       } else if (value === "dec") {
+        if (foundProduct.quantity > 1) {
         foundProduct.quantity--
         currentItems[index] = foundProduct
         set({ items: [...get().items] })
+      }
       }
     },
     removeAll: () => set({ items: [] }),
