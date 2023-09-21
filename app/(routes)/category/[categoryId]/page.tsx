@@ -11,10 +11,10 @@ interface Iparams {
 }
 const page = async ({ params }: { params: Iparams }) => {
    const category = await getCategory(params.categoryId)
-   if (!category) {
+   const products= await getProducts({categoryId: category.id})
+   if (!products.length) {
       return <NoResults />
    }
-   const products= await getProducts({categoryId: category.id})
    return (
       <div>
          <div className='flex justify-between items-center'>
