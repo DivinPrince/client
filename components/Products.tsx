@@ -13,7 +13,7 @@ const Products: React.FC<ProductsProps> = ({ data,title }) => {
          {data.length === 0 && <NoResults />}
          <h1 className='p-2 text-[23px] flex gap-2 font-semibold items-center'>{title}</h1>
          <Separater />
-         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+         <div className="flex flex-wrap gap-3">
             {data.map(product => (
                <ProductCard product={product} />
             ))
