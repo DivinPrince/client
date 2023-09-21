@@ -30,3 +30,7 @@ export interface Color {
   name: string;
   value: string;
 }
+
+export type CartProduct = Product&{
+  quantity: number
+}

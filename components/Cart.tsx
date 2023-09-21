@@ -50,7 +50,7 @@ const Cart: React.FC<CartProps> = ({ }) => {
                      <div className='w-fit sm:w-[150px] text-center'>Remove</div>
                   </div>
                   <div></div>
-                  {cartItems.map((item: Product) => (
+                  {cartItems.map((item) => (
                      <CartProduct item={item} key={item.id}/>
                   ))}
                </Card>

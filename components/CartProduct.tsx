@@ -1,5 +1,5 @@
 'use client'
-import { Product } from '@/types'
+import { CartProduct, Product } from '@/types'
 import Image from 'next/image'
 import react from 'react'
 import { Button } from './ui/button'
@@ -8,7 +8,7 @@ import { Trash2 } from 'lucide-react'
 import Currency from './ui/currency'
 import useCart from '@/hooks/use-cart'
 interface CartProductProps {
-   item: Product
+   item: CartProduct
 }
 const CartProduct: React.FC<CartProductProps> = ({ item }) => {
    const cart = useCart()
@@ -19,6 +19,11 @@ const CartProduct: React.FC<CartProductProps> = ({ item }) => {
                <Image src={item.images[0].url} alt={item.name} width={70} height={70} className='rounded-md h-[70px] object-contain' />
             </div>
             <h1 className='w-[100px] overflow-hidden capitalize whitespace-nowrap text-ellipsis text-lg font-semibold'>{item.name}</h1>
+         </div>
+         <div className='text-lg flex font-semibold gap-2 items-center justify-center w-fit sm:w-[150px]'>
+            <Button variant='secondary' onClick={() => cart.toogleCartItemQuantity(item.id, 'dec')}>-</Button>
+            <h1>{item.quantity}</h1>
+            <Button variant='secondary' onClick={() => cart.toogleCartItemQuantity(item.id, 'inc')}>+</Button>
          </div>
          <div className='text-base font-semibold w-fit sm:w-[150px] text-center'>
             <h1><Currency value={item.price}/></h1>

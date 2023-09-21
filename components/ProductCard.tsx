@@ -25,7 +25,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                Added To Cart
             </div>
          )}
-         <Button className='absolute right-0 mr-3' variant='ghost' onClick={()=>{cart.addItem(product)}}>
+         <Button className='absolute right-0 mr-3' variant='ghost' onClick={()=>{cart.addItem(product,1)}}>
             <ShoppingCart/>
          </Button>
          <div className='bg-white/5 rounded-lg cursor-pointer' onClick={() => router.push(`/products/${product.id}`)}>

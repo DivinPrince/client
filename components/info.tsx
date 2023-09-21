@@ -15,7 +15,7 @@ const Info: React.FC<InfoProps> = ({ data }) => {
   const cart = useCart();
 
   const onAddToCart = () => {
-    cart.addItem(data);
+    cart.addItem(data,1);
   }
 
   return ( 
