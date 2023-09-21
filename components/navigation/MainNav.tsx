@@ -25,7 +25,7 @@ const MainNav: React.FC<MainNavProps> = ({
 
   return (
     <>
-      <div className="flex flex-col gap-2 text-[23px]">
+      <div className="flex flex-col gap-2 text-[20px]">
         {main.map((route) => (
           <Link
             key={route.href}

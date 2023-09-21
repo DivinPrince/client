@@ -6,12 +6,19 @@ import useCart from '@/hooks/use-cart'
 import Currency from './ui/currency'
 import Separater from './Separater'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select'
+import axios from 'axios'
 
 const OrderInfo = () => {
    const items = useCart((state) => state.items)
    const totalPrice = items.reduce((total, item) => {
       return total + Number(item.price)
    }, 0);
+   const onCheckout = async () => {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
+         productIds: items.map((item) => item.id)
+      });
+   }
+
    return (
       <Card className='w-full lg:w-[400px]'>
          <h1 className='text-3xl font-semibold'>
@@ -36,7 +43,7 @@ const OrderInfo = () => {
                   <Input placeholder='Post Code' disabled={false} id='' className='bg-transparent' />
                </div>
                <Input placeholder='Phone Number' disabled={false} id='' className='bg-transparent' />
-               <Button className='w-full'>Place Order</Button>
+               <Button onClick={onCheckout} className='w-full'>Place Order</Button>
             </form>
             <div>
 
