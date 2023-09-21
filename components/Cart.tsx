@@ -46,6 +46,7 @@ const Cart: React.FC<CartProps> = ({ }) => {
                   </div>
                   <div className='flex justify-between text-gray-500 font-semibold text-base'>
                      <div className='w-fit sm:w-[150px] text-center'>Product</div>
+                     <div className='w-fit sm:w-[150px] text-center'>Quantity</div>
                      <div className='w-fit sm:w-[150px] text-center'>Price</div>
                      <div className='w-fit sm:w-[150px] text-center'>Remove</div>
                   </div>

@@ -26,7 +26,7 @@ const CartProduct: React.FC<CartProductProps> = ({ item }) => {
             <Button variant='secondary' onClick={() => cart.toogleCartItemQuantity(item.id, 'inc')}>+</Button>
          </div>
          <div className='text-base font-semibold w-fit sm:w-[150px] text-center'>
-            <h1><Currency value={item.price}/></h1>
+            <h1><Currency value={Number(item.price) * item.quantity}/></h1>
          </div>
          <div className='w-fit sm:w-[150px] flex justify-center'>
             <Button variant='destructive' onClick={() => cart.removeItem(item.id)}>
