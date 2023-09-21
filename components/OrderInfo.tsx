@@ -1,4 +1,5 @@
-import React from 'react'
+'use client'
+import React, { useEffect } from 'react'
 import Card from './Card'
 import { Input } from './ui/input'
 import { Button } from './ui/button'
@@ -18,6 +19,21 @@ const OrderInfo = () => {
          productIds: items.map((item) => item.id)
       });
    }
+   useEffect(()=>{
+      navigator.geolocation.getCurrentPosition(position =>{
+         const {latitude,longitude} = position.coords
+
+         const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
+
+         axios.get(url).then(res => res.data).then(data =>{
+            console.table(data.address);
+            
+         }).catch(()=>{
+            console.log('none');
+            
+         })
+      })
+   })
 
    return (
       <Card className='w-full lg:w-[400px]'>
