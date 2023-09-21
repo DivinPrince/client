@@ -9,9 +9,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import axios from 'axios'
 
 const OrderInfo = () => {
-   const  cart = useCart()
    const items = useCart((state) => state.items)
-   const totalPrice = cart.totalPrice
+   const totalPrice = items.reduce((total, item) => {
+      return total + (Number(item.price) * Number(item.quantity))
+   }, 0);
    const onCheckout = async () => {
       const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
          productIds: items.map((item) => item.id)

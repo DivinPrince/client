@@ -26,7 +26,7 @@ const useCart = create(
       const currentItems = get().items;
       const existingItem = currentItems.find((item) => item.id === data.id);
       set({ totalQuantity: get().totalQuantity + quantity })
-      set({ totalPrice: get().totalPrice + parseInt(data.price)})
+      set({ totalPrice: get().totalPrice + Number(data.price)})
       
       if (existingItem) {
         return toast('Item already in the cart');
@@ -40,7 +40,7 @@ const useCart = create(
       foundProduct = currentItems.find((item) => item.id === id);
       if (foundProduct) {
         set({ totalQuantity: get().totalQuantity - foundProduct?.quantity })
-        set({ totalPrice: get().totalPrice - parseInt(foundProduct.price)})
+        set({ totalPrice: get().totalPrice - Number(foundProduct.price)})
       }
       set({ items: [...get().items.filter((item) => item.id !== id)] });
       toast.success('Item removed from cart.');
@@ -56,14 +56,14 @@ const useCart = create(
         foundProduct.quantity++
         currentItems[index] = foundProduct
         set({ totalQuantity: get().totalQuantity + 1 })
-        set({ totalPrice: get().totalPrice + parseInt(foundProduct.price)})
+        set({ totalPrice: get().totalPrice + Number(foundProduct.price)})
         set({ items: [...get().items] })
       } else if (value === "dec") {
         if (foundProduct.quantity > 1) {
           foundProduct.quantity--
           currentItems[index] = foundProduct
           set({ totalQuantity: get().totalQuantity - 1 })
-          set({ totalPrice: get().totalPrice - parseInt(foundProduct.price)})
+          set({ totalPrice: get().totalPrice - Number(foundProduct.price)})
           set({ items: [...get().items] })
         }
       }
