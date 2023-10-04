@@ -1,22 +1,17 @@
 'use client'
-import { useStateContext } from '@/context/StateContext'
-import { Product } from '@/types'
-import react, { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Card from './Card'
 import CartProduct from './CartProduct'
 import { ArrowBigLeft, ShoppingBag } from 'lucide-react'
 import { Button } from './ui/button'
 import { useRouter } from 'next/navigation'
-import { Separator } from '@radix-ui/react-select'
-import Separater from './Separater'
-import Currency from './ui/currency'
-import { Input } from './ui/input'
 import useCart from '@/hooks/use-cart'
-import OrderInfo from './OrderInfo'
-// import Input from './Input'
+import OrderInfo from './OrderInfo' 
+import { District } from '@/types'
 interface CartProps {
+   districts: District[]
 }
-const Cart: React.FC<CartProps> = ({ }) => {
+const Cart: React.FC<CartProps> = ({ districts }) => {
    const [isMouted, setIsMouted] = useState(false)
    useEffect(() => {
       setIsMouted(true)
@@ -55,7 +50,7 @@ const Cart: React.FC<CartProps> = ({ }) => {
                      <CartProduct item={item} key={item.id}/>
                   ))}
                </Card>
-               <OrderInfo />
+               <OrderInfo districts={districts}/>
             </>
 
          ) : (

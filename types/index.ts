@@ -30,6 +30,10 @@ export interface Color {
   name: string;
   value: string;
 }
+export interface District {
+  id: string;
+  name: string;
+}
 
 export type CartProduct = Product&{
   quantity: number

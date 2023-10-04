@@ -1,7 +1,10 @@
 "use client";
+
+import Footer from "@/components/Footer";
+
 const Error = () => {
    return (
-      <div className='h-full text-center font-semibold text-muted-foreground'>SomeThing Went Wrong</div>
+      <div>Something went wrong!</div>
    );
 }
 

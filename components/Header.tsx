@@ -23,7 +23,7 @@ const Header: React.FC<HeaderProps> = ({ }) => {
 
    return (
       <>
-         <div className='p-2 flex justify-between sticky top-0 backdrop-blur-lg'>
+         <div className='p-2 flex justify-between sticky z-50 top-0 backdrop-blur-lg'>
             <div className='flex items-end gap-2'>
                <Image src='/logo.png' alt='logo' width={60} height={40} />
                <p className='text-lg font-bold font-serif hidden md:flex'>Crpto<span className='text-orange-500'>Tech</span></p>

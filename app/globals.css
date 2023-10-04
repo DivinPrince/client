@@ -113,3 +113,9 @@ h1 {
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
 }
+.img{
+  filter: grayscale(10);
+}
+.form{
+  border-radius: 3px solid rgb(38 38 38 / 0.3);
+}
