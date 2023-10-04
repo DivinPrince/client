@@ -12,7 +12,7 @@ export default function RootLayout({
    children: React.ReactNode
 }) {
    return (
-      <div className='p-3 md:pl-[262px]'>
+      <div className='p-3'>
          <Header />
          {children}
       </div>

@@ -1,8 +1,14 @@
 'use client'
+
+import Separater from "./Separater"
+
 interface FooterProps { }
 const Footer: React.FC<FooterProps> = ({ }) => {
    return (
-      <div className="flex justify-around p-3 md:pl-[150px] w-full">
+      <>
+       {/* 6 33 */}
+      <Separater />
+      <div className="flex justify-around p-2 ">
          <div className="flex flex-col gap-2">
             <div className="relative">
                <h1 className="text-[20px] font-bold select-none">Our Company</h1>
@@ -56,6 +62,7 @@ const Footer: React.FC<FooterProps> = ({ }) => {
             </ul>
          </div>
       </div>
+      </>
    )
 }
 export default Footer

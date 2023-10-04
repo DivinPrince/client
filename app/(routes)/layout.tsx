@@ -8,7 +8,7 @@ const layout = ({
   children: React.ReactNode
 }) => {
   return (
-    <div>
+    <div className='md:pl-[262px]'>
       <Nav />
       {children}
       <Footer />
