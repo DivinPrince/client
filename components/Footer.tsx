@@ -2,7 +2,7 @@
 interface FooterProps { }
 const Footer: React.FC<FooterProps> = ({ }) => {
    return (
-      <div className="flex justify-around p-4 w-full">
+      <div className="flex justify-around p-3 md:pl-[150px] w-full">
          <div className="flex flex-col gap-2">
             <div className="relative">
                <h1 className="text-[20px] font-bold select-none">Our Company</h1>

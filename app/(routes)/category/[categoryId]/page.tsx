@@ -6,12 +6,26 @@ import MobileFilters from './components/mobile-filters';
 import getCategory from '@/actions/get-category';
 import getProducts from '@/actions/get-products';
 import NoResults from '@/components/Noresult';
+import getSizes from '@/actions/get-sizes';
+import getColors from '@/actions/get-colors';
 interface Iparams {
-   categoryId: string;
+   params: {
+      categoryId: string;
+   },
+   searchParams: {
+      colorId: string;
+      sizeId: string;
+   }
 }
-const page = async ({ params }: { params: Iparams }) => {
-   const category = await getCategory(params.categoryId)
-   const products= await getProducts({categoryId: category.id})
+const page: React.FC<Iparams> = async ({ params, searchParams }) => {
+   const products = await getProducts({
+      categoryId: params.categoryId,
+      colorId: searchParams.colorId,
+      sizeId: searchParams.sizeId,
+   });
+   const sizes = await getSizes();
+   const colors = await getColors();
+   const category = await getCategory(params.categoryId);
    if (!products.length) {
       return <NoResults />
    }
@@ -19,7 +33,7 @@ const page = async ({ params }: { params: Iparams }) => {
       <div>
          <div className='flex justify-between items-center'>
             <h1 className='p-2 text-[23px] flex gap-2 font-semibold items-center'>{category.name}</h1>
-            <MobileFilters colors={[{ id: "gh4as3", name: "Pink", value: "pink" }, { id: "gh4asf3", name: "red", value: "red" }]} sizes={[{ id: "gh43", name: "small", value: "Sm" }, { id: "gh43", name: "Large", value: "Lg" }]}/>
+            <MobileFilters sizes={sizes} colors={colors} />
          </div>
          <Separater />
          <div className='flex gap-3 flex-wrap'>

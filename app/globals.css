@@ -115,6 +115,9 @@ h1 {
 }
 .img{
   filter: grayscale(10);
+  margin-left: calc(100%/2);
+  margin-top: 390px;
+  scale: 2.5;
 }
 .form{
   border-radius: 3px solid rgb(38 38 38 / 0.3);

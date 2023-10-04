@@ -1,11 +1,31 @@
-"use client";
+'use client'
 
-import Footer from "@/components/Footer";
+import { Button } from '@/components/ui/button'
+import { useEffect } from 'react'
 
-const Error = () => {
+export default function Error({
+   error,
+   reset,
+}: {
+   error: Error & { digest?: string }
+   reset: () => void
+}) {
+   useEffect(() => {
+      console.error(error)
+   }, [error])
+
    return (
-      <div>Something went wrong!</div>
-   );
+      <div className='text-center'>
+         <h2 className='text-muted-foreground'>Something went wrong!</h2>
+         <Button
+            variant='ghost'
+            className='rounded-full'
+            onClick={
+               () => reset()
+            }
+         >
+            Try again
+         </Button>
+      </div>
+   )
 }
-
-export default Error;

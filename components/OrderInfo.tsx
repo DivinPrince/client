@@ -17,7 +17,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import toast from 'react-hot-toast'
 
 const formSchema = z.object({
-   phoneNumber: z.number().min(10),
+   phoneNumber: z.string().min(10),
    name: z.string().min(2),
    district: z.string().min(2),
 });
@@ -76,7 +76,6 @@ const OrderInfo: React.FC<orderProps> = ({ districts }) => {
                      name="district"
                      render={({ field }) => (
                         <FormItem>
-                           <FormLabel>Category</FormLabel>
                            <Select onValueChange={field.onChange} value={field.value} defaultValue={field.value}>
                               <FormControl>
                                  <SelectTrigger className='bg-transparent'>
@@ -98,7 +97,6 @@ const OrderInfo: React.FC<orderProps> = ({ districts }) => {
                      name="phoneNumber"
                      render={({ field }) => (
                         <FormItem>
-                           <FormLabel>Name</FormLabel>
                            <FormControl>
                               <Input placeholder="Phone Number" {...field} className='bg-transparent'/>
                            </FormControl>
