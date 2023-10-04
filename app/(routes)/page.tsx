@@ -10,7 +10,7 @@ export default async function Home() {
     return <NoResults />
   }
   return (
-    <div className='p-3 md:pl-[262px]'>
+    <div className='p-3'>
       <Header />
       <Landing />
       <Products title='Featured' data={featured} />
