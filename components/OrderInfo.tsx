@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from './Card'
 import { Input } from './ui/input'
 import { Button } from './ui/button'
@@ -9,46 +9,59 @@ import Separater from './Separater'
 import * as z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select'
 import axios from 'axios'
-import { District } from '@/types'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from './ui/form'
 import toast from 'react-hot-toast'
 
 const formSchema = z.object({
    phoneNumber: z.string().min(10),
    name: z.string().min(2),
+   province: z.string().min(2),
    district: z.string().min(2),
+   sector: z.string().min(2),
+   cell: z.string().min(2),
+   village: z.string().min(2),
 });
 
 type OrderFormValues = z.infer<typeof formSchema>
-interface orderProps {
-   districts: District[]
-}
-const OrderInfo: React.FC<orderProps> = ({ districts }) => {
+const OrderInfo = ({ }) => {
    const items = useCart((state) => state.items)
+   const cart = useCart()
    const totalPrice = items.reduce((total, item) => {
       return total + (Number(item.price) * Number(item.quantity))
    }, 0);
    const form = useForm<OrderFormValues>({
       resolver: zodResolver(formSchema),
+      defaultValues: {
+         name: '',
+         phoneNumber: '',
+         province: '',
+         district: '',
+         cell: '',
+         village: '',
+      }
    });
    const onSubmit = async (data: OrderFormValues) => {
       try {
-         await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
+         await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, JSON.stringify({
             productIds: items.map((item) => item.id),
+            quantities: items.map((item) => item.quantity),
             info: {
                name: data.name,
                phoneNumber: data.phoneNumber,
-               district: data.district
+               province: data.province,
+               district: data.district,
+               cell: data.cell,
+               village: data.village,
             }
-         });
-
-      } catch (error: any) {
+         }))
+         cart.removeAll()
+         form.reset()
+         toast('Placed the Order it will be delivered as soon as possible')
+      } catch (error) {
          toast.error('Something went wrong.');
-      } finally {
       }
+
    };
 
    return (
@@ -73,32 +86,71 @@ const OrderInfo: React.FC<orderProps> = ({ districts }) => {
                   />
                   <FormField
                      control={form.control}
-                     name="district"
+                     name="phoneNumber"
                      render={({ field }) => (
                         <FormItem>
-                           <Select onValueChange={field.onChange} value={field.value} defaultValue={field.value}>
-                              <FormControl>
-                                 <SelectTrigger className='bg-transparent'>
-                                    <SelectValue defaultValue={field.value} placeholder="Select a District" />
-                                 </SelectTrigger>
-                              </FormControl>
-                              <SelectContent>
-                                 {districts.map((district) => (
-                                    <SelectItem key={district.id} value={district.id}>{district.name}</SelectItem>
-                                 ))}
-                              </SelectContent>
-                           </Select>
+                           <FormControl>
+                              <Input placeholder="Phone Number" {...field} className='bg-transparent' />
+                           </FormControl>
                            <FormMessage />
                         </FormItem>
                      )}
                   />
                   <FormField
                      control={form.control}
-                     name="phoneNumber"
+                     name="province"
                      render={({ field }) => (
                         <FormItem>
                            <FormControl>
-                              <Input placeholder="Phone Number" {...field} className='bg-transparent'/>
+                              <Input placeholder="Your province / Intara" {...field} className='bg-transparent' />
+                           </FormControl>
+                           <FormMessage />
+                        </FormItem>
+                     )}
+                  />
+                  <FormField
+                     control={form.control}
+                     name="district"
+                     render={({ field }) => (
+                        <FormItem>
+                           <FormControl>
+                              <Input placeholder="Your district / Akarere" {...field} className='bg-transparent' />
+                           </FormControl>
+                           <FormMessage />
+                        </FormItem>
+                     )}
+                  />
+                  <FormField
+                     control={form.control}
+                     name="sector"
+                     render={({ field }) => (
+                        <FormItem>
+                           <FormControl>
+                              <Input placeholder="Your sector / Umurenge" {...field} className='bg-transparent' />
+                           </FormControl>
+                           <FormMessage />
+                        </FormItem>
+                     )}
+                  />
+                  <FormField
+                     control={form.control}
+                     name="cell"
+                     render={({ field }) => (
+                        <FormItem>
+                           <FormControl>
+                              <Input placeholder="Your cell / Akagari" {...field} className='bg-transparent' />
+                           </FormControl>
+                           <FormMessage />
+                        </FormItem>
+                     )}
+                  />
+                  <FormField
+                     control={form.control}
+                     name="village"
+                     render={({ field }) => (
+                        <FormItem>
+                           <FormControl>
+                              <Input placeholder="Your village / Umudugudu" {...field} className='bg-transparent' />
                            </FormControl>
                            <FormMessage />
                         </FormItem>

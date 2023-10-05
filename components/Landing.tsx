@@ -2,8 +2,6 @@
 import Image from 'next/image'
 import react from 'react'
 import AutoWrite from './AutoWrite'
-import { SignIn, SignUp } from '@clerk/nextjs'
-import Form from './Form'
 interface LandingProps { }
 const Landing: React.FC<LandingProps> = ({ }) => {
    return (
