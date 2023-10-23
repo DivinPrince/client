@@ -59,6 +59,7 @@ const OrderInfo = ({ }) => {
          form.reset()
          toast('Placed the Order it will be delivered as soon as possible')
       } catch (error) {
+         console.log(error)
          toast.error('Something went wrong.');
       }
 
