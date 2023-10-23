@@ -43,7 +43,7 @@ const OrderInfo = ({ }) => {
    });
    const onSubmit = async (data: OrderFormValues) => {
       try {
-         await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, JSON.stringify({
+         await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/order`, JSON.stringify({
             productIds: items.map((item) => item.id),
             quantities: items.map((item) => item.quantity),
             info: {
