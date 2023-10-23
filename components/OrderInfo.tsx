@@ -64,7 +64,7 @@ const OrderInfo = ({}) => {
           },
         }),
         headers: {
-         "Access-Control-Allow-Origin": `${process.env.NEXT_PUBLIC_API_URL}/order`,
+         "Access-Control-Allow-Origin": "https://crptotech.com",
         },
       });
       cart.removeAll();
