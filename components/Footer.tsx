@@ -8,7 +8,7 @@ const Footer: React.FC<FooterProps> = ({ }) => {
       <>
        {/* 6 33 */}
       <Separater />
-      <div className="flex justify-around p-2 ">
+      <div className="flex justify-around p-2 flex-wrap">
          <div className="flex flex-col gap-2">
             <div className="relative">
                <h1 className="text-[20px] font-bold select-none">Our Company</h1>
