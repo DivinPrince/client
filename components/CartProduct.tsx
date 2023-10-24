@@ -1,9 +1,6 @@
-'use client'
-import { CartProduct, Product } from '@/types'
+import { CartProduct } from '@/types'
 import Image from 'next/image'
-import react from 'react'
 import { Button } from './ui/button'
-import { useStateContext } from '@/context/StateContext'
 import { Trash2 } from 'lucide-react'
 import Currency from './ui/currency'
 import useCart from '@/hooks/use-cart'
@@ -22,11 +19,11 @@ const CartProduct: React.FC<CartProductProps> = ({ item }) => {
          </div>
          <div className='text-lg flex font-semibold gap-2 items-center justify-center w-fit sm:w-[150px]'>
             <Button variant='secondary' onClick={() => cart.toogleCartItemQuantity(item.id, 'dec')}>-</Button>
-            <h1>{item.quantity}</h1>
+            <p>{item.quantity}</p>
             <Button variant='secondary' onClick={() => cart.toogleCartItemQuantity(item.id, 'inc')}>+</Button>
          </div>
          <div className='text-base font-semibold w-fit sm:w-[150px] text-center'>
-            <h1><Currency value={Number(item.price) * item.quantity}/></h1>
+            <p><Currency value={Number(item.price) * item.quantity}/></p>
          </div>
          <div className='w-fit sm:w-[150px] flex justify-center'>
             <Button variant='destructive' onClick={() => cart.removeItem(item.id)}>

@@ -157,21 +157,21 @@ const OrderInfo = ({ }) => {
             <div>
                <Separater />
                <div className='flex justify-between items-center'>
-                  <h1 className=''>Order Total</h1>
+                  <h2 className=''>Order Total</h2>
                   <p>
                      <Currency value={totalPrice} />
                   </p>
                </div>
                <Separater />
                <div className='flex justify-between items-center'>
-                  <h1 className=''>Shipping</h1>
+                  <h2 className=''>Shipping</h2>
                   <p>
                      <Currency value={15000} />
                   </p>
                </div>
                <Separater />
                <div className='flex justify-between items-center'>
-                  <h1 className=''>Total</h1>
+                  <h2 className=''>Total</h2>
                   <p>
                      <Currency value={totalPrice + 15000} />
                   </p>

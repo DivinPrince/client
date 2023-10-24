@@ -11,7 +11,7 @@ const Footer: React.FC<FooterProps> = ({ }) => {
       <div className="flex justify-around p-2 flex-wrap">
          <div className="flex flex-col gap-2">
             <div className="relative">
-               <h1 className="text-[20px] font-bold select-none">Our Company</h1>
+               <p className="text-[20px] font-bold select-none">Our Company</p>
                <div className="absolute w-[35px] h-[3px] bg-orange-700 rounded-full"></div>
             </div>
             <ul className="text-muted-foreground mt-4">
@@ -31,7 +31,7 @@ const Footer: React.FC<FooterProps> = ({ }) => {
          </div>
          <div className="flex flex-col gap-2">
             <div className="relative">
-               <h1 className="text-[20px] font-bold select-none">Services</h1>
+               <p className="text-[20px] font-bold select-none">Services</p>
                <div className="absolute w-[35px] h-[3px] bg-orange-700 rounded-full"></div>
             </div>
             <ul className="text-muted-foreground mt-4">
@@ -45,7 +45,7 @@ const Footer: React.FC<FooterProps> = ({ }) => {
          </div>
          <div className="flex flex-col gap-2">
             <div className="relative">
-               <h1 className="text-[20px] font-bold select-none">Contact Us</h1>
+               <p className="text-[20px] font-bold select-none">Contact Us</p>
                <div className="absolute w-[35px] h-[3px] bg-orange-700 rounded-full"></div>
             </div>
             <ul className="text-muted-foreground mt-4">
