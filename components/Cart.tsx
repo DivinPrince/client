@@ -1,3 +1,5 @@
+'use client'
+import { useEffect, useState } from 'react'
 import Card from './Card'
 import CartProduct from './CartProduct'
 import { ArrowBigLeft, ShoppingBag } from 'lucide-react'
@@ -7,10 +9,18 @@ import useCart from '@/hooks/use-cart'
 import OrderInfo from './OrderInfo'
 
 const Cart = () => {
+   const [isMouted, setIsMouted] = useState(false)
+   useEffect(() => {
+      setIsMouted(true)
+   }, [])
 
    const cart = useCart()
    const cartItems = cart.items
    const router = useRouter()
+
+   if (!isMouted) {
+      return null
+   }
 
    return (
       <>

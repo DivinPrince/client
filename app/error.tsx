@@ -15,11 +15,11 @@ export default function Error({
    }, [error])
 
    return (
-      <div className='text-center'>
+      <div className='h-full flex justify-center flex-col items-center gap-2.5'>
          <h2 className='text-muted-foreground'>Something went wrong!</h2>
          <Button
-            variant='ghost'
-            className='rounded-full'
+            variant='secondary'
+            className='rounded-full text-blue-400'
             onClick={
                () => reset()
             }

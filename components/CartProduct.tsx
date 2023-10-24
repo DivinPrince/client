@@ -1,3 +1,4 @@
+'use client'
 import { CartProduct } from '@/types'
 import Image from 'next/image'
 import { Button } from './ui/button'
