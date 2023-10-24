@@ -42,7 +42,6 @@ const OrderInfo = ({ }) => {
       }
    });
    const onSubmit = async (data: OrderFormValues) => {
-      try {
          await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/order`, JSON.stringify({
             productIds: items.map((item) => item.id),
             quantities: items.map((item) => item.quantity),
@@ -58,11 +57,6 @@ const OrderInfo = ({ }) => {
          cart.removeAll()
          form.reset()
          toast('Placed the Order it will be delivered as soon as possible')
-      } catch (error) {
-         console.log(error)
-         toast.error('Something went wrong.');
-      }
-
    };
 
    return (
