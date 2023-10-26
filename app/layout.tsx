@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "twitter:image": "https://crptotech.com/thumbnail.png",
     "twitter:card": "summary_large_image",
     "og:url": "crptotech.com",
-    "og: image": "https://crptotech.com/thumbnail.png",
+    "og:image": "https://crptotech.com/thumbnail.png",
     "og:type": "website",
   },
 };
