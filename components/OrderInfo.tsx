@@ -52,6 +52,7 @@ const OrderInfo = ({ }) => {
                district: data.district,
                cell: data.cell,
                village: data.village,
+               total: totalPrice + 15000
             }
          }))
          cart.removeAll()
