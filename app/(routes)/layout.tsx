@@ -1,4 +1,5 @@
 import Footer from '@/components/Footer'
+import Header from '@/components/Header'
 import Nav from '@/components/navigation/Nav'
 import React from 'react'
 
@@ -9,7 +10,7 @@ const layout = ({
 }) => {
   return (
     <div className='md:pl-[262px]'>
-      <Nav />
+      <Header />
       {children}
       <Footer />
     </div>
