@@ -4,7 +4,7 @@ import react, { useEffect, useState } from "react";
 import { Input } from "./ui/input";
 import Separater from "./Separater";
 import Link from "next/link";
-import { ShoppingBag } from "lucide-react";
+import { MenuIcon, ShoppingBag } from "lucide-react";
 import useCart from "@/hooks/use-cart";
 import { Button } from "./ui/button";
 import {
@@ -36,15 +36,10 @@ const Header: React.FC<HeaderProps> = ({}) => {
       <div className="p-2 flex justify-between sticky z-50 top-0 backdrop-blur-lg">
         <div className="flex items-end gap-2">
           <Sheet>
-            <SheetTrigger asChild>
-              <div>
-                <Image src="/logo.png" alt="logo" width={60} height={40} />
-                <p className="text-lg font-bold font-serif hidden md:flex">
-                  Crpto<span className="text-orange-500">Tech</span>
-                </p>
-              </div>
+            <SheetTrigger>
+              <MenuIcon className="h-4 w-4"/>
             </SheetTrigger>
-            <SheetContent className="p-5 bg-gray-100 dark:bg-neutral-800 mt-2 rounded-r-lg mb-2 border-none">
+            <SheetContent side="left" className="p-5 bg-gray-100 dark:bg-neutral-800 w-[250px] mt-2 rounded-r-lg mb-2 border-none">
               <Nav />
             </SheetContent>
           </Sheet>
