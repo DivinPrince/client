@@ -9,7 +9,7 @@ const layout = ({
   children: React.ReactNode
 }) => {
   return (
-    <div className='md:pl-[262px]'>
+    <div className=''>
       <Header />
       {children}
       <Footer />
