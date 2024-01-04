@@ -8,6 +8,12 @@ import { Category } from "@/types";
 import NavLink from "./NavLink";
 import useRoutes from "@/hooks/useRoutes";
 import Separater from "../Separater";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface MainNavProps {
   data: Category[];
@@ -26,7 +32,7 @@ const MainNav: React.FC<MainNavProps> = ({
 
   return (
     <>
-      <div className="flex flex-col gap-2 text-[20px]">
+      <div className="hidden md:flex flex-col gap-2 text-[20px]">
         {main.map((route) => (
           <>
             <Link
@@ -58,6 +64,36 @@ const MainNav: React.FC<MainNavProps> = ({
           </>
         ))}
       </div>
+      <DropdownMenuContent className="flex md:hidden">
+      {main.map((route) => (
+          <DropdownMenuItem>
+            <Link
+              key={route.href}
+              href={route.href}
+              className={cn(
+                'font-medium transition-colors hover:text-primary',
+                route.active ? 'text-primary' : ''
+              )}
+            >
+              {route.label}
+            </Link>
+          </DropdownMenuItem>
+        ))}
+        {routes.map((route) => (
+          <DropdownMenuItem>
+            <Link
+              key={route.href}
+              href={route.href}
+              className={cn(
+                'font-medium transition-colors hover:',
+                route.active ? 'text-primary' : 'text-muted-foreground'
+              )}
+            >
+              {route.label}
+            </Link>
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
     </>
   )
 };
