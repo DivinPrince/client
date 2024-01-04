@@ -11,6 +11,7 @@ export default async function Home() {
   }
   return (
     <div className='p-3'>
+      <Header />
       <Landing />
       <Products title='Featured' data={featured} />
     </div>

@@ -13,6 +13,7 @@ export default function RootLayout({
 }) {
    return (
       <div className='p-3'>
+         <Header />
          {children}
       </div>
    )
