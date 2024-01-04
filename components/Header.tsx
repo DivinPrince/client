@@ -37,12 +37,14 @@ const Header: React.FC<HeaderProps> = ({}) => {
         <div className="flex items-end gap-2">
           <Sheet>
             <SheetTrigger asChild>
-              <Image src="/logo.png" alt="logo" width={60} height={40} />
-              <p className="text-lg font-bold font-serif hidden md:flex">
-                Crpto<span className="text-orange-500">Tech</span>
-              </p>
+              <div>
+                <Image src="/logo.png" alt="logo" width={60} height={40} />
+                <p className="text-lg font-bold font-serif hidden md:flex">
+                  Crpto<span className="text-orange-500">Tech</span>
+                </p>
+              </div>
             </SheetTrigger>
-            <SheetContent className='p-5 bg-gray-100 dark:bg-neutral-800 mt-2 rounded-r-lg mb-2 border-none'>
+            <SheetContent className="p-5 bg-gray-100 dark:bg-neutral-800 mt-2 rounded-r-lg mb-2 border-none">
               <Nav />
             </SheetContent>
           </Sheet>
