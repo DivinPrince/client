@@ -42,8 +42,7 @@ const OrderInfo = ({ }) => {
       }
    });
    const onSubmit = async (data: OrderFormValues) => {
-      try {
-         await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, JSON.stringify({
+         await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/order`, JSON.stringify({
             productIds: items.map((item) => item.id),
             quantities: items.map((item) => item.quantity),
             info: {
@@ -53,15 +52,12 @@ const OrderInfo = ({ }) => {
                district: data.district,
                cell: data.cell,
                village: data.village,
+               total: totalPrice + 15000
             }
          }))
          cart.removeAll()
          form.reset()
          toast('Placed the Order it will be delivered as soon as possible')
-      } catch (error) {
-         toast.error('Something went wrong.');
-      }
-
    };
 
    return (
@@ -162,21 +158,21 @@ const OrderInfo = ({ }) => {
             <div>
                <Separater />
                <div className='flex justify-between items-center'>
-                  <h1 className=''>Order Total</h1>
+                  <h2 className=''>Order Total</h2>
                   <p>
                      <Currency value={totalPrice} />
                   </p>
                </div>
                <Separater />
                <div className='flex justify-between items-center'>
-                  <h1 className=''>Shipping</h1>
+                  <h2 className=''>Shipping</h2>
                   <p>
                      <Currency value={15000} />
                   </p>
                </div>
                <Separater />
                <div className='flex justify-between items-center'>
-                  <h1 className=''>Total</h1>
+                  <h2 className=''>Total</h2>
                   <p>
                      <Currency value={totalPrice + 15000} />
                   </p>
