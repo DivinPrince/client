@@ -57,7 +57,7 @@ const Footer: React.FC<FooterProps> = ({ }) => {
                   crptotech@gmail.com
                </li>
                <li>
-                  Copyright © Anon All Rights Reserved.
+                  Copyright © Crptotech All Rights Reserved.
                </li>
             </ul>
          </div>

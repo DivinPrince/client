@@ -1,8 +1,10 @@
+'use client'
 import { Button, buttonVariants } from "@/components/ui/button";
 import { SheetTrigger, SheetContent, Sheet } from "@/components/ui/sheet";
 import useRoutes from "@/hooks/useRoutes";
 import { cn } from "@/lib/utils";
 import { Category } from "@/types";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -12,25 +14,26 @@ export default function Component({ data }: { data: Category[] }) {
   const routes = data.map((route) => ({
     href: `/category/${route.id}`,
     label: route.name,
-    active: pathname === `/categories/${route.id}`,
+    active: pathname === `/category/${route.id}`,
   }));
   return (
     <div className="flex h-screen">
       <Sheet>
-        <SheetTrigger asChild>
+        <SheetTrigger asChild className="fixed top-0 mt-5 ml-5 z-[51]">
           <Button className="lg:hidden" size="icon" variant="outline">
             <MenuIcon className="h-6 w-6" />
             <span className="sr-only">Toggle navigation menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent className="w-64" side="left">
+        <SheetContent className="w-64 z-[52]" side="left">
+          <Image src='/logo.png' width={40} height={40} alt=""/>
           <nav className="flex flex-col gap-4 p-4">
             {main.map((route) => (
               <Link
                 key={route.href}
                 href={route.href}
                 className={cn(
-                  "w-full",
+                  "w-full text-left",
                   route.active
                     ? buttonVariants({variant: 'secondary'})
                     : buttonVariants({variant: 'ghost'}),
@@ -58,7 +61,7 @@ export default function Component({ data }: { data: Category[] }) {
           </nav>
         </SheetContent>
       </Sheet>
-      <div className="hidden lg:flex lg:flex-col lg:w-64 lg:border-r">
+      <div className="hidden fixed left-0 lg:flex lg:flex-col lg:w-[240px] h-screen lg:border-r">
         <nav className="flex flex-col gap-4 p-4">
         {main.map((route) => (
               <Link

@@ -1,3 +1,4 @@
+'use client'
 import { useParams, usePathname } from "next/navigation";
 import { useMemo } from "react";
 import {AiFillDashboard, AiFillHome, AiFillPayCircle, AiOutlineBarChart} from 'react-icons/ai'
