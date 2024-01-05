@@ -64,36 +64,6 @@ const MainNav: React.FC<MainNavProps> = ({
           </>
         ))}
       </div>
-      <DropdownMenuContent className="flex md:hidden">
-      {main.map((route) => (
-          <DropdownMenuItem>
-            <Link
-              key={route.href}
-              href={route.href}
-              className={cn(
-                'font-medium transition-colors hover:text-primary',
-                route.active ? 'text-primary' : ''
-              )}
-            >
-              {route.label}
-            </Link>
-          </DropdownMenuItem>
-        ))}
-        {routes.map((route) => (
-          <DropdownMenuItem>
-            <Link
-              key={route.href}
-              href={route.href}
-              className={cn(
-                'font-medium transition-colors hover:',
-                route.active ? 'text-primary' : 'text-muted-foreground'
-              )}
-            >
-              {route.label}
-            </Link>
-          </DropdownMenuItem>
-        ))}
-      </DropdownMenuContent>
     </>
   )
 };
