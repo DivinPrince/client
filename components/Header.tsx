@@ -39,20 +39,7 @@ const Header: React.FC<HeaderProps> = ({}) => {
           </p>
         </div>
         <div className="flex md:hidden">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button className="bg-none">
-                <Image
-                  src="/logo.png"
-                  alt="logo"
-                  width={40}
-                  height={40}
-                  className="aspect-square"
-                />
-              </Button>
-            </DropdownMenuTrigger>
-            <Mobi />
-          </DropdownMenu>
+          <Mobi />
         </div>
 
         <div className="flex-1 flex justify-end gap-4 items-center">
