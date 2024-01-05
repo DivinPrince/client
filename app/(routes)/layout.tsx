@@ -10,7 +10,7 @@ const layout = ({
   return (
     <div className='flex'>
       <Nav />
-      <div className='ml-[240px]'>
+      <div className='ml-0 lg:ml-[240px]'>
       {children}
       <Footer />
       </div>
