@@ -14,6 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import MainNav from "./navigation/MainNav";
+import Mobi from "./navigation/Mobi";
 
 interface HeaderProps {}
 const Header: React.FC<HeaderProps> = ({}) => {
@@ -50,7 +51,7 @@ const Header: React.FC<HeaderProps> = ({}) => {
                 />
               </Button>
             </DropdownMenuTrigger>
-            <MainNav />
+            <Mobi />
           </DropdownMenu>
         </div>
 
