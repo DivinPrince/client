@@ -44,7 +44,7 @@ const MainMobi: React.FC<MainMobiProps> = ({ data }) => {
             />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="flex md:hidden">
+        <DropdownMenuContent>
           {main.map((route) => (
             <DropdownMenuItem>
               <Link

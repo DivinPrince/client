@@ -18,16 +18,7 @@ import Mobi from "./navigation/Mobi";
 
 interface HeaderProps {}
 const Header: React.FC<HeaderProps> = ({}) => {
-  const [isMouted, setIsMouted] = useState(false);
-  useEffect(() => {
-    setIsMouted(true);
-  }, []);
-
   const cart = useCart();
-
-  if (!isMouted) {
-    return null;
-  }
 
   return (
     <>
