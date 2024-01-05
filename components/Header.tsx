@@ -29,9 +29,6 @@ const Header: React.FC<HeaderProps> = ({}) => {
             Crpto<span className="text-orange-500">Tech</span>
           </p>
         </div>
-        <div className="flex md:hidden">
-          <Mobi />
-        </div>
 
         <div className="flex-1 flex justify-end gap-4 items-center">
           <Input
