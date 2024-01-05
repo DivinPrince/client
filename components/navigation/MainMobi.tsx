@@ -33,7 +33,7 @@ const MainMobi: React.FC<MainMobiProps> = ({ data }) => {
   return (
     <>
       <DropdownMenu>
-        <DropdownMenuTrigger asChild>
+        <DropdownMenuTrigger>
           <Button className="bg-none">
             <Image
               src="/logo.png"
